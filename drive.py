@@ -11,11 +11,14 @@ import eventlet.wsgi
 from PIL import Image
 from flask import Flask
 from io import BytesIO
-
-from keras.models import load_model
 import h5py
+from keras.models import load_model
 from keras import __version__ as keras_version
-
+from preprocessing import preprocess
+import tensorflow as tf
+config = tf.compat.v1.ConfigProto(gpu_options=
+                                  tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.6))
+config.gpu_options.allow_growth = True
 sio = socketio.Server()
 app = Flask(__name__)
 model = None
@@ -61,6 +64,7 @@ def telemetry(sid, data):
         imgString = data["image"]
         image = Image.open(BytesIO(base64.b64decode(imgString)))
         image_array = np.asarray(image)
+        image_array = preprocess(image_array)
         steering_angle = float(model.predict(image_array[None, :, :, :], batch_size=1))
 
         throttle = controller.update(float(speed))
@@ -68,7 +72,7 @@ def telemetry(sid, data):
         print(steering_angle, throttle)
         send_control(steering_angle, throttle)
 
-        # save frame
+        ## save frame
         if args.image_folder != '':
             timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S_%f')[:-3]
             image_filename = os.path.join(args.image_folder, timestamp)
@@ -95,12 +99,14 @@ def send_control(steering_angle, throttle):
 
 
 if __name__ == '__main__':
+
     parser = argparse.ArgumentParser(description='Remote Driving')
     parser.add_argument(
         'model',
         type=str,
         help='Path to model h5 file. Model should be on the same path.'
     )
+
     parser.add_argument(
         'image_folder',
         type=str,
