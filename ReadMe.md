@@ -4,8 +4,8 @@
 [image0]: ./documentation/track.gif "testing"
 **Behavioral Cloning Project**  
 
-#####Author : Aparajith Sridharan
-#####date : 23-03-2021  
+##### Author : Aparajith Sridharan
+##### date : 23-03-2021  
 
 ![text][image0]
 
