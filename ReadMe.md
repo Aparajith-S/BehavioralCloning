@@ -28,6 +28,8 @@ The goals / steps of this project are the following:
 [image10]: ./documentation/recovery3.gif "recover2"
 [image11]: ./documentation/Ep_1_5.jpg "ep1-5"
 [image12]: ./documentation/Ep_5_10.jpg "ep5-10"
+[video0]: ./track_1.mp4 "trk1"
+[video1]: ./ScreenRecording_track1.mp4 "scrtrk1"
 
 ---
 ### Files Submitted & Code Quality
@@ -257,7 +259,13 @@ This proved to make the model learn features better with the batch size of train
 Train-validation split was done at 75-25.
 Train and validation set were shuffled before training. 
 
+### 4. Results
+`track_1.mp4` contains the video from the pictures from roof mounted center camera images.
+`ScreenRecording_track1.mp4` contains the same recorded parallely from unity3d application.  
+![video][video0]  
+![video][video1]  
 
-### 4. Additional References
+
+### 5. Additional References
 1. https://jvgemert.github.io/pub/kayhanCVPR20translationInvarianceCNN.pdf
 2. https://stackoverflow.com/questions/40952163/are-modern-cnn-convolutional-neural-network-as-detectnet-rotate-invariant/40953261#40953261
