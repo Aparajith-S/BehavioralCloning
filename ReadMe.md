@@ -204,9 +204,9 @@ The steps employed are as follows:
 - Convert RGB ---> YUV
 - Crop a ROI
 - Do a ordinary Histogram equalization on Y channel (CLAHE was tried but it yielded poor results)
-- Normalize the image
-  The following shows the image and it's ROI superimposed.
-  ![alt text][image3]
+- Normalize the image  
+  The following shows the image and it's ROI superimposed.  
+  ![alt text][image3]  
 - Augment Images.
     - Flipping :
     Flipping of images was not done in post processing. 
