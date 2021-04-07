@@ -194,10 +194,7 @@ These images show what a recovery looks like starting from either sides of the r
 Then I repeated this process on track two in order to get more data points.  
 ![alt text][image10]
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image13]
-![alt text][image14]
+To augment the data sat, I tilted and sheared the images thinking that this would bring in variations which will generalize the model at the same time add more data for larger steering angles.
 
 After the collection process, I had 37566 number of data points. The following describes the challenges faced and the methods employed to overcome the challenges.
 
